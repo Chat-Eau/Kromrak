@@ -25,7 +25,14 @@ public class Choice {
         Cycle.getInstance().receiveOut(message);
     }
 
-    public void receiveChoice(){
+    public boolean confirmChoice(String input){
         //TODO:Gérer un message de séléction du joueur reçu de la pile In.
+        if (options.contains(input)){
+            Cycle.getInstance().receiveOut(new Message("ChoiceAnswer", input));
+            return true;
+        } else {
+            sendRequest();
+            return false;
+        }
     }
 }
